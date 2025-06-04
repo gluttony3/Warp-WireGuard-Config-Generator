@@ -1,0 +1,81 @@
+ How to Use the Script
+
+    Install requirements:
+
+Make sure you have:
+
+    Python 3
+
+    WireGuard tools installed (wg, wg-quick)
+
+    Internet access
+
+    On Linux, install WireGuard tools:
+
+# Debian/Ubuntu
+sudo apt install wireguard
+
+# Void Linux
+sudo xbps-install -S wireguard-tools
+
+    Save the script:
+
+Save the Python code to a file, for example:
+
+nano generate_warp.py
+
+Paste the script and save.
+
+    Run the script:
+
+python3 generate_warp.py
+
+    Follow the prompts:
+
+    It will generate keys
+
+    Register with the Cloudflare API
+
+    Ask you to enter a name (e.g., phone, pc)
+
+    Save the file as warp_phone.conf or warp_pc.conf
+
+Important Note
+
+After the config file is created, open it and check the Endpoint line.
+If it looks like this:
+
+Endpoint = 162.159.192.5:0:2408
+
+You need to manually fix it to:
+
+Endpoint = 162.159.192.5:2408
+
+ How to Use Warp Config
+On Linux
+
+sudo wg-quick up ./warp_pc.conf    # Start Warp
+sudo wg-quick down ./warp_pc.conf  # Stop Warp
+
+On Windows
+
+    Download and install WireGuard for Windows
+
+    Open the WireGuard app
+
+    Click “Add Tunnel” → “Add empty tunnel…”
+
+    Paste the contents of warp_pc.conf
+
+    Click “Activate” to connect
+
+On macOS
+
+    Install WireGuard for macOS via App Store or Homebrew:
+
+brew install --cask wireguard
+
+    Import your config file
+
+    Click “Activate”
+
